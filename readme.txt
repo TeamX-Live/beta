@@ -1,1 +1,1 @@
-# Welcome to TeamX
+Welcome to TeamX
