@@ -8,3 +8,431 @@
 @import 'components/cover';
 @import 'components/isotope';
 @import 'components/contents';
+
+.about {
+    $cubic: cubic-bezier(0.64, 0.01, 0.07, 1.65);
+    $transition: 0.6s $cubic;
+    $size: 40px;
+    position: fixed;
+    z-index: 10;
+    bottom: 10px;
+    right: 10px;
+    width: $size;
+    height: $size;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    transition: all 0.2s ease;
+ 
+    .bg_links {
+       width: $size;
+       height: $size;
+       border-radius: 100%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       background-color: rgba(#000000, 0.2);
+       border-radius: 100%;
+       backdrop-filter: blur(5px);
+       position: absolute;
+    }
+ 
+    .logo {
+       width: $size;
+       height: $size;
+       z-index: 9;
+       background-image: url(https://rafaelavlucas.github.io/assets/codepen/logo_white.svg);
+       background-size: 50%;
+       background-repeat: no-repeat;
+       background-position: 10px 7px;
+       opacity: 0.9;
+       transition: all 1s 0.2s ease;
+       bottom: 0;
+       right: 0;
+    }
+ 
+    .social {
+       opacity: 0;
+       right: 0;
+       bottom: 0;
+ 
+       .icon {
+          width: 100%;
+          height: 100%;
+          background-size: 20px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: transparent;
+          display: flex;
+          transition: all 0.2s ease, background-color 0.4s ease;
+          opacity: 0;
+          border-radius: 100%;
+       }
+ 
+       &.portfolio {
+          transition: all 0.8s ease;
+ 
+          .icon {
+             background-image: url(https://rafaelavlucas.github.io/assets/codepen/link.svg);
+          }
+       }
+ 
+       &.dribbble {
+          transition: all 0.3s ease;
+          .icon {
+             background-image: url(https://rafaelavlucas.github.io/assets/codepen/dribbble.svg);
+          }
+       }
+ 
+       &.linkedin {
+          transition: all 0.8s ease;
+          .icon {
+             background-image: url(https://rafaelavlucas.github.io/assets/codepen/linkedin.svg);
+          }
+       }
+    }
+ 
+    &:hover {
+       width: 105px;
+       height: 105px;
+       transition: all $transition;
+ 
+       .logo {
+          opacity: 1;
+          transition: all 0.6s ease;
+       }
+ 
+       .social {
+          opacity: 1;
+ 
+          .icon {
+             opacity: 0.9;
+          }
+ 
+          &:hover {
+             background-size: 28px;
+             .icon {
+                background-size: 65%;
+                opacity: 1;
+             }
+          }
+ 
+          &.portfolio {
+             right: 0;
+             bottom: calc(100% - 40px);
+             transition: all 0.3s 0s $cubic;
+             .icon {
+                &:hover {
+                   background-color: #698fb7;
+                }
+             }
+          }
+ 
+          &.dribbble {
+             bottom: 45%;
+             right: 45%;
+             transition: all 0.3s 0.15s $cubic;
+             .icon {
+                &:hover {
+                   background-color: #ea4c89;
+                }
+             }
+          }
+ 
+          &.linkedin {
+             bottom: 0;
+             right: calc(100% - 40px);
+             transition: all 0.3s 0.25s $cubic;
+             .icon {
+                &:hover {
+                   background-color: #0077b5;
+                }
+             }
+          }
+       }
+    }
+ }
+ 
+ 
+ @import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap");
+ 
+ $font-01: "Raleway", sans-serif;
+ 
+ $gradient-02: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+ $gradient-01: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+ 
+ $m-01: #9197ae;
+ $m-02: #637498;
+ 
+ @mixin sm {
+    @media screen and (max-width: 799px) {
+       @content;
+    }
+ }
+ 
+ * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 0;
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+ 
+    &:focus {
+       outline: 0;
+    }
+ }
+ 
+ body {
+    font-family: $font-01;
+ }
+ 
+ .mainNav {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $m-01;
+    text-transform: uppercase;
+    padding: 0 40px;
+    @include sm {
+       padding: 0 20px;
+    }
+ 
+    &__logo {
+       font-weight: 800;
+       letter-spacing: 1px;
+       font-size: 18px;
+    }
+ 
+    &__links {
+       display: flex;
+       @include sm {
+          display: none;
+       }
+    }
+ 
+    &__link {
+       letter-spacing: 1px;
+       font-size: 14px;
+       margin-left: 20px;
+       font-weight: 600;
+       box-shadow: inset 0px -10px 0px rgba(white, 0.5);
+       transition: all 0.4s ease, transform 0.2s ease;
+       padding: 2px 4px;
+       transform: translateY(0px); 
+       
+       &:hover {
+         transform: translateY(-5px);
+         box-shadow: inset 0px -20px 0px white; 
+       }
+    }
+ 
+    &__icon {
+       background-image: url(https://rafaelalucas91.github.io/assets/icons/black/icon-141.svg);
+       width: 32px;
+       height: 32px;
+       background-size: contain;
+       background-repeat: no-repeat;
+       background-position: center;
+       display: none;
+ 
+       @include sm {
+          display: block;
+       }
+    }
+ }
+ 
+ .mainHeading {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 0 40px;
+    background-image: $gradient-01;
+    
+ 
+    @include sm {
+       padding: 0 20px;
+    }
+ 
+    &__content {
+       max-width: 1110px;
+       min-height: 600px;
+       left: 50%;
+       transform: translateX(-50%);
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       position: relative;
+ 
+       @include sm {
+          min-height: 500px;
+       }
+    }
+ 
+    &__text {
+       z-index: 1;
+       color: $m-02;
+       background-color: rgba(white, 0.2);
+       padding: 40px;
+       max-width: 620px;
+       margin-top: 100px;
+       width: 70%;
+       backdrop-filter: blur(8px);
+       animation: text 0.8s 0.6s ease backwards;
+       position: relative;
+       
+       &:before {
+          content: "";
+          position: absolute;
+          width: 5px;
+          height: 100%;
+          background-color: rgba(white, 0.5);
+          top:0;
+          left:0;
+          animation: line 0.8s 0.6s ease backwards;
+          @keyframes line {
+          0% {
+             right:0;
+             width:100%;
+             opacity:0;
+          }
+       }
+       }
+ 
+       @include sm {
+          padding: 20px;
+          margin: 90px 0 40px 0;
+       }
+ 
+       @keyframes text {
+          0% {
+             opacity: 0;
+             transform: translateX(200px);
+          }
+       }
+    }
+ 
+    &__preTitle {
+       text-transform: uppercase;
+       font-weight: 600;
+       letter-spacing: 2px;
+       margin-bottom: 16px;
+       color: $m-02;
+    }
+ 
+    &__title {
+       text-transform: uppercase;
+       font-weight: 200;
+       letter-spacing: 2px;
+       margin-bottom: 24px;
+       font-size: 40px;
+       color: $m-02;
+ 
+       @include sm {
+          margin-bottom: 16px;
+          font-size: 28px;
+       }
+    }
+ 
+    &__description {
+       letter-spacing: 0.5px;
+       font-size: 16px;
+       line-height: 26px;
+       @include sm {
+          font-size: 14px;
+       }
+    }
+ 
+    &__image {
+       right: 0;
+       max-width: 600px;
+       width: 60%;
+       height: 600px;
+       transform: translatey(100px);
+       position: absolute;
+       overflow: hidden;
+       animation: image 0.6s 0.2s ease backwards;
+ 
+       @include sm {
+          height: 480px;
+          width: 70%;
+          transform: translatey(80px);
+          right: -6%;
+       }
+ 
+       @keyframes image {
+          0% {
+             opacity: 0;
+             transform: translatey(200px);
+          }
+       }
+ 
+       &:before,
+       &:after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 0%;
+          top: 100%;
+          background-image: $gradient-01;
+          opacity: 1;
+          left: 0;
+       }
+ 
+       &:before {
+          animation: imageBefore 1s 0.2s ease backwards;
+ 
+          @keyframes imageBefore {
+             0% {
+                height: 100%;
+                top: 0;
+             }
+          }
+       }
+ 
+       &:after {
+          background-image: $gradient-01;
+          height: 100%;
+          top: 0;
+          opacity: 0.2;
+       }
+       img {
+          width: 100%;
+          height: 100%;
+       }
+    }
+ }
+ 
+ .cta {
+    padding: 16px 32px;
+    color: $m-02;
+    background-color: transparent;
+    border: 1px solid rgba($m-02, 0.4);
+    font-family: $font-01;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-top: 32px;
+    cursor: pointer;
+    box-shadow: inset 0px 0px 0px rgba($m-02, 0.2);
+    transition: all 0.4s ease;
+ 
+    &:hover {
+       border: 1px solid rgba($m-02, 0.1);
+       box-shadow: inset 0px -80px 0px rgba($m-02, 0.1);
+       transform: translateY(-5px);
+    }
+    @include sm {
+       margin-top: 16px;
+    }
+ }
+ 
+ /*b2*/
+ 
